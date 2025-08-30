@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
+  <link rel="stylesheet" href="/css/all.min.css">
+  
+  <title>Frontend Mentor | Results summary component</title>
+
+  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900&display=swap');
+
+    body {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      background-color: hsl(221, 100%, 96%);
+      font-family: "Hanken Grotesk", sans-serif;
+    }
+
+    .container {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: 100vh;
+    }
+
+    @media(max-width: 425px) {
+      .container {
+        display: inline;
+      }
+      .content {
+        flex-direction: column;
+        flex-wrap: wrap;
+        border-radius: 0 !important;
+      }
+      .left, .right {
+        width: 100%;
+        border-top-left-radius: 0px !important;
+        border-top-right-radius: 0px !important;
+      }
+      .left {
+        padding: 35px 35px !important;
+      }
+      .left .title {
+        margin-bottom: 15px !important;
+      }
+      .circle {
+        margin-top: 5px !important;
+        padding: 20px !important;
+      }
+      .Heading-of-text {
+        margin-bottom: 2.5px !important;
+        margin-top: calc(36px/2);
+      }
+      .text p {
+        margin-top: 9px;
+        margin-bottom: 9px;
+      }
+      .text {
+        width: 300px !important;
+      }
+      .right{
+        padding: 20px 40px !important;
+      }
+      .right-content {
+        padding: 15px !important;
+      }
+      a {
+        padding: 15px 40px !important;
+      }
+      .end {
+        margin-bottom: 20px !important;
+      }
+    }
+
+    .content{
+      background-color: hsl(0, 0%, 100%);
+      border-radius: 30px;
+      display: flex;
+      justify-content: center;
+      flex-direction: row;
+    }
+    .left {
+      padding: 40px 70px;
+    }
+    .left-content {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+    .title {
+      font-size: 20px;
+      font-weight: 800;
+      margin-top: 0;
+      margin-bottom: 30px;
+    }
+    .left .title {
+      color: hsl(241, 100%, 89%);
+      text-align: center;
+    }
+
+    .left {
+      background: linear-gradient(to bottom, hsl(252, 100%, 67%),hsl(241, 81%, 54%));
+      border-radius: 30px;
+    }
+
+    .circle{
+      margin-top: 10px;
+      background: linear-gradient(to bottom, hsla(256, 72%, 46%, 1), hsl(241, 81%, 54%));
+      padding: 40px;
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+    .result {
+      margin-top: 0;
+      margin-bottom: 0;
+      font-size: 60px;
+      display: flex;
+      justify-content: center;
+      align-items:end;
+      position: relative;
+      color: hsl(0, 0%, 100%);
+    }
+    .result::after {
+      content: "of 100";
+      font-size: 13px;
+      position: absolute;
+      margin-bottom: -14px;
+      color: rgb(202,192,255);
+    }
+    .text {
+      text-align: center;
+      width: 244px;
+
+    }
+    .Heading-of-text {
+      margin-bottom: 5px;
+      color: white;
+      font-size: 36px;
+    }
+    .text p {
+      color: rgb(202,192,255);
+      font-size: 18px;
+    }
+
+    .right{
+      padding: 40px;
+    }
+
+    .right > title{
+      margin-top: 0;
+    }
+    .right-content {
+      margin-bottom: 15px;
+      padding: 20px;
+      display: flex;
+      justify-content: space-between;
+      gap: 100px ;
+      align-items: center;
+      border-radius: 10px;
+    }
+    .end {
+      margin-bottom: 40px;
+    }
+    .red {
+      background: hsl(0, 100%, 97%);
+    }
+    .right-content > div {
+      display: flex;
+      align-items: center;
+      flex-direction: row;
+    }
+    .yellow {
+      background: hsl(39, 100%, 97%);
+    }
+    .yellow p {
+      color: hsl(39, 100%, 67%);
+    }
+    .red p {
+      color: hsl(0, 100%, 67%);
+    }
+    i {
+      padding-right: 10px;
+    }
+    .right-content p {
+      font-size: 18px;
+      margin: 0;
+    }
+
+    .green {
+      background: hsl(166, 100%, 97%);
+    }
+    .green p {
+      color: hsl(166, 100%, 37%);
+    }
+    a {
+      text-decoration: none;
+      color: white;
+      text-align: center;
+      padding: 20px 80px;
+      background-color: hsl(224, 30%, 27%);
+      display: block;
+      border-radius: 50px;
+      font-weight: bold;
+      font-size: 18px;
+    }
+    a:hover {
+      background: linear-gradient(to bottom, hsl(252, 100%, 67%),hsl(241, 81%, 54%));
+    }
+
+    .first {
+      margin-top: 10px;
+    }
+
+    .blue {
+      background-color: hsl(234, 85%, 97%);
+    }
+
+    .blue p , .blue i {
+      color: hsl(234, 85%, 45%);
+    }
+
+    .red i {
+      color: hsl(0, 100%, 67%);
+    }
+    .yellow i {
+      color: hsl(39, 100%, 56%);
+    }
+    .green i {
+      color: hsl(166, 100%, 37%);
+    }
+    
+    span > span {
+      color: #AABBCC;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="container">
+      <div class="content">
+    <div class="left">
+      <p class="title">Your Result</p>
+      <div class="left-content">
+        <div class="circle">
+          <h3 class="result">76</h3>
+        </div>
+        <div class="text">
+          <h3 class="Heading-of-text">Great</h3>
+          <p>You scored higher than 65% of the people who have taken these tests.</p>
+        </div>
+      </div>
+    </div>
+    <div class="right">
+      <p class="title">Summary</p>
+      <div class="summary">
+        <div class="right-content red first">
+          <div class="div">
+            <i class="fa-solid fa-bolt"></i>
+            <p>Reaction</p>
+          </div>
+          <span>80 <span>/ 100</span></span>
+        </div>
+
+        <div class="right-content yellow">
+          <div class="div">
+            <i class="fa-solid fa-brain"></i>
+            <p>Memory</p>
+          </div>
+          <span>92 <span>/ 100</span></span>
+        </div>
+
+        <div class="right-content green">
+          <div class="div">
+            <i class="fa-solid fa-comment"></i>
+            <p>Verbal</p>
+          </div>
+          <span>61 <span>/ 100</span></span>
+        </div>
+
+        <div class="right-content blue end">
+          <div class="div">
+            <i class="fa-solid fa-eye"></i>
+            <p>Visual</p>
+          </div>
+          <span>72 <span>/ 100</span></span>
+        </div>
+
+      </div>
+      <a href="#">Continue</a>
+    </div>
+  </div>
+  </div>
+</body>
+</html>
